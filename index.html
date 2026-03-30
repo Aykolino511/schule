@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> DAA - Aykolino - Eigen- & Fremdlagerung </title>
+    <title> DAA - AykolinoApps - Eigen- & Fremdlagerung </title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
     <style>
-        /* Allgemeine Einstellungen für ein modernes Schriftbild und Layout */
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background-color: #f4f7f6;
@@ -33,7 +35,6 @@
             display: inline-block;
         }
 
-        /* Styling der "Karten" für die einzelnen Abschnitte */
         .card {
             background: #ffffff;
             padding: 25px 30px;
@@ -43,13 +44,11 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        /* Hover-Effekt für die Karten */
         .card:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
 
-        /* Modernes Tabellen-Design */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -75,7 +74,6 @@
             text-align: left;
         }
 
-        /* Hover-Effekt für Tabellenzeilen */
         tbody tr {
             transition: background-color 0.2s ease;
         }
@@ -84,7 +82,6 @@
             background-color: #f1f8ff;
         }
 
-        /* Hervorhebung der besten Lösung */
         .highlight-row {
             background-color: #e8f4fd;
             border-left: 4px solid #3498db;
@@ -95,7 +92,6 @@
             color: #2980b9;
         }
 
-        /* Listen-Styling für die Risiken */
         ul {
             padding-left: 20px;
         }
@@ -104,7 +100,6 @@
             margin-bottom: 10px;
         }
 
-        /* Moderner Button mit Hover-Effekt */
         .btn-container {
             text-align: center;
             margin-top: 40px;
@@ -132,12 +127,11 @@
         .btn:active {
             transform: scale(0.98);
         }
-
     </style>
 </head>
 <body>
 
-    <div class="container">
+    <div class="container" id="bericht-inhalt">
         <h1>Auswertung: Eigen- vs. Fremdlagerung</h1>
 
         <div class="card">
@@ -214,11 +208,28 @@
             </ul>
         </div>
 
-        <div class="btn-container">
-            <button class="btn" onclick="alert('Bericht wurde erfolgreich gespeichert!')">Bericht als PDF speichern</button>
+        <div class="btn-container" data-html2canvas-ignore="true">
+            <button class="btn" onclick="speichereAlsPDF()">Als PDF speichern</button>
         </div>
-
     </div>
 
+    <script>
+        function speichereAlsPDF() {
+            // Definiere den Bereich, der gedruckt werden soll (unser Container)
+            const element = document.getElementById('bericht-inhalt');
+            
+            // Konfiguration für das PDF
+            const optionen = {
+                margin:       10, // Seitenrand in mm
+                filename:     'Lager_Auswertung.pdf', // Name der heruntergeladenen Datei
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2 }, // Erhöht die Auflösung des PDFs
+                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+
+            // PDF generieren und Download starten
+            html2pdf().set(optionen).from(element).save();
+        }
+    </script>
 </body>
 </html>
