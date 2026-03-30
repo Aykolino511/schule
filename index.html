@@ -3,11 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> DAA - AykolinoApps - Eigen- & Fremdlagerung </title>
+    <title>Make-or-Buy Analyse | High-End-Scanner</title>
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-
     <style>
+        /* --- WASSERZEICHEN --- */
+        body::after {
+            content: 'DAA - AykolinoApps - Eigen- & Fremdlagerung'; /* Hier kannst du den Text des Wasserzeichens ändern */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 150px;
+            font-weight: 900;
+            color: rgba(52, 152, 219, 0.08); /* Leichtes Blau mit 8% Deckkraft */
+            white-space: nowrap;
+            pointer-events: none; /* Verhindert, dass das Wasserzeichen Klicks blockiert */
+            z-index: 9999; /* Legt das Wasserzeichen über alle anderen Elemente */
+        }
+
+        /* --- ALLGEMEINES LAYOUT --- */
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background-color: #f4f7f6;
@@ -17,10 +31,10 @@
             padding: 40px 20px;
         }
 
-        /* Etwas schmaler gemacht, damit es optimal auf A4 passt */
         .container {
-            max-width: 850px; 
+            max-width: 900px; 
             margin: 0 auto;
+            position: relative;
         }
 
         h1 {
@@ -36,17 +50,22 @@
             display: inline-block;
         }
 
+        /* --- KARTEN-DESIGN --- */
         .card {
             background: #ffffff;
             padding: 25px 30px;
             border-radius: 12px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
             margin-bottom: 30px;
-            /* WICHTIG: Verhindert, dass die Box auf zwei Seiten aufgeteilt wird */
-            page-break-inside: avoid;
-            break-inside: avoid;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        /* --- TABELLEN-DESIGN --- */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -54,7 +73,7 @@
         }
 
         th, td {
-            padding: 12px;
+            padding: 15px;
             text-align: right;
             border-bottom: 1px solid #ecf0f1;
             font-size: 0.95em;
@@ -65,7 +84,7 @@
             color: #7f8c8d;
             font-weight: 600;
             text-transform: uppercase;
-            font-size: 0.8em;
+            font-size: 0.85em;
             letter-spacing: 0.5px;
         }
 
@@ -73,10 +92,12 @@
             text-align: left;
         }
 
-        /* WICHTIG: Verhindert, dass eine Tabellenzeile zerschnitten wird */
-        tr {
-            page-break-inside: avoid;
-            break-inside: avoid;
+        tbody tr {
+            transition: background-color 0.2s ease;
+        }
+
+        tbody tr:hover {
+            background-color: #f1f8ff;
         }
 
         .highlight-row {
@@ -89,6 +110,7 @@
             color: #2980b9;
         }
 
+        /* --- LISTEN --- */
         ul {
             padding-left: 20px;
         }
@@ -96,33 +118,11 @@
         li {
             margin-bottom: 10px;
         }
-
-        .btn-container {
-            text-align: center;
-            margin-top: 40px;
-        }
-
-        .btn {
-            background-color: #3498db;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 8px;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(52, 152, 219, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .btn:hover {
-            background-color: #2980b9;
-        }
     </style>
 </head>
 <body>
 
-    <div class="container" id="bericht-inhalt">
+    <div class="container">
         <h1>Auswertung: Eigen- vs. Fremdlagerung</h1>
 
         <div class="card">
@@ -198,29 +198,7 @@
                 <li><strong>Transport- und Versorgungsrisiko:</strong> Bei 6 Lieferungen pro Jahr ist der Sicherheitspuffer im Lager geringer (max. 2.000 Stück). Lieferschwierigkeiten des spanischen Zulieferers oder Transportausfälle führen schneller zu Produktionsstillständen.</li>
             </ul>
         </div>
-
-        <div class="btn-container" data-html2canvas-ignore="true">
-            <button class="btn" onclick="speichereAlsPDF()">Als PDF speichern</button>
-        </div>
     </div>
 
-    <script>
-        function speichereAlsPDF() {
-            const element = document.getElementById('bericht-inhalt');
-            
-            const optionen = {
-                margin:       15, // Etwas mehr Seitenrand
-                filename:     'Lager_Auswertung.pdf',
-                image:        { type: 'jpeg', quality: 0.98 },
-                // scale: 2 für Schärfe, windowWidth zwingt das Layout auf eine feste Breite
-                html2canvas:  { scale: 2, windowWidth: 850 }, 
-                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
-                // Sagt dem PDF-Erzeuger, dass er die CSS-Umbrüche respektieren soll
-                pagebreak:    { mode: ['css', 'legacy'] } 
-            };
-
-            html2pdf().set(optionen).from(element).save();
-        }
-    </script>
 </body>
 </html>
