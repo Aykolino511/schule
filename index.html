@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make-or-Buy Analyse | High-End-Scanner</title>
+    <style>
+        /* Allgemeine Einstellungen für ein modernes Schriftbild und Layout */
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f7f6;
+            color: #2c3e50;
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a252f;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #34495e;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+
+        /* Styling der "Karten" für die einzelnen Abschnitte */
+        .card {
+            background: #ffffff;
+            padding: 25px 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Hover-Effekt für die Karten */
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Modernes Tabellen-Design */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: right;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        th {
+            background-color: #f8f9fa;
+            color: #7f8c8d;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85em;
+            letter-spacing: 0.5px;
+        }
+
+        th:first-child, td:first-child {
+            text-align: left;
+        }
+
+        /* Hover-Effekt für Tabellenzeilen */
+        tbody tr {
+            transition: background-color 0.2s ease;
+        }
+
+        tbody tr:hover {
+            background-color: #f1f8ff;
+        }
+
+        /* Hervorhebung der besten Lösung */
+        .highlight-row {
+            background-color: #e8f4fd;
+            border-left: 4px solid #3498db;
+        }
+
+        .highlight-row td {
+            font-weight: bold;
+            color: #2980b9;
+        }
+
+        /* Listen-Styling für die Risiken */
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        /* Moderner Button mit Hover-Effekt */
+        .btn-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(52, 152, 219, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(52, 152, 219, 0.4);
+        }
+        
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Auswertung: Eigen- vs. Fremdlagerung</h1>
+
+        <div class="card">
+            <h2>1. Kostenübersicht der Bestellmengen</h2>
+            <p>Vergleich der Gesamtkosten auf Basis des durchschnittlichen Lagerbestands bei 3 bis 7 Lieferungen pro Jahr.</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Lieferungen (n)</th>
+                        <th>Bestellmenge</th>
+                        <th>Ø Lagerbestand</th>
+                        <th>Bestellkosten</th>
+                        <th>Kosten Eigenlager</th>
+                        <th>Kosten Fremdlager</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>3</td>
+                        <td>4.000 Stk.</td>
+                        <td>2.000 Stk.</td>
+                        <td>4.500,00 €</td>
+                        <td>21.500,00 €</td>
+                        <td>25.100,00 €</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>3.000 Stk.</td>
+                        <td>1.500 Stk.</td>
+                        <td>6.000,00 €</td>
+                        <td>21.250,00 €</td>
+                        <td>21.450,00 €</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>2.400 Stk.</td>
+                        <td>1.200 Stk.</td>
+                        <td>7.500,00 €</td>
+                        <td>21.700,00 €</td>
+                        <td>19.860,00 €</td>
+                    </tr>
+                    <tr class="highlight-row">
+                        <td>6</td>
+                        <td>2.000 Stk.</td>
+                        <td>1.000 Stk.</td>
+                        <td>9.000,00 €</td>
+                        <td>22.500,00 €</td>
+                        <td>19.300,00 €</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>1.714 Stk.</td>
+                        <td>857 Stk.</td>
+                        <td>10.500,00 €</td>
+                        <td>23.500,00 €</td>
+                        <td>19.328,57 €</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>2. Handlungsempfehlung</h2>
+            <p>Die Variante mit den geringsten Kosten ist die <strong>Fremdlagerung bei 6 Lieferungen pro Jahr</strong>. Die jährlichen Gesamtkosten belaufen sich hierbei auf das Minimum von <strong>19.300,00 EUR</strong>.</p>
+        </div>
+
+        <div class="card">
+            <h2>3. Risikobewertung</h2>
+            <p>Bei der Entscheidung für 6 Lieferungen und eine Fremdlagerung sollten folgende Risiken beachtet werden:</p>
+            <ul>
+                <li><strong>Abhängigkeit vom Dienstleister:</strong> Durch das Fremdlager begibt man sich in die Abhängigkeit eines Dritten (Risiko von Streiks, Insolvenz oder Qualitätsmängeln bei der Lagerung).</li>
+                <li><strong>Transport- und Versorgungsrisiko:</strong> Bei 6 Lieferungen pro Jahr ist der Sicherheitspuffer im Lager geringer (max. 2.000 Stück). Lieferschwierigkeiten des spanischen Zulieferers oder Transportausfälle führen schneller zu Produktionsstillständen.</li>
+            </ul>
+        </div>
+
+        <div class="btn-container">
+            <button class="btn" onclick="alert('Bericht wurde erfolgreich gespeichert!')">Bericht als PDF speichern</button>
+        </div>
+
+    </div>
+
+</body>
+</html>
