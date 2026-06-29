@@ -3,202 +3,561 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Make-or-Buy Analyse | High-End-Scanner</title>
-    
+    <title>Pokémon Card 151 Display (Japanisch) kaufen | Kanto Collectibles</title>
+    <meta name="description" content="Sichere dir das exklusive japanische Pokémon Card 151 Booster Display (sv2a). Originalversiegelt mit garantierten Masterball Holos. Jetzt bei Kanto Collectibles bestellen!">
     <style>
-        /* --- WASSERZEICHEN --- */
-        body::after {
-            content: 'AykolinoApps'; /* Hier kannst du den Text des Wasserzeichens ändern */
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(-45deg);
-            font-size: 150px;
-            font-weight: 900;
-            color: rgba(52, 152, 219, 0.08); /* Leichtes Blau mit 8% Deckkraft */
-            white-space: nowrap;
-            pointer-events: none; /* Verhindert, dass das Wasserzeichen Klicks blockiert */
-            z-index: 9999; /* Legt das Wasserzeichen über alle anderen Elemente */
+        /* Modern CSS Reset & Variables */
+        :root {
+            --primary-color: #2a75d3; /* Neues Haupt-Blau */
+            --primary-hover: #1c529b; /* Dunkleres Blau für Hover-Effekte */
+            --secondary-color: #e3350d; /* Rot als sekundäre Farbe */
+            --accent-gold: #ffcb05; /* Pokémon Gelb / Gold */
+            --dark-bg: #12141c;
+            --card-bg: #1f2330;
+            --text-light: #f4f5f7;
+            --text-muted: #a0a6b5;
+            --border-color: #2d3345;
+            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        /* --- ALLGEMEINES LAYOUT --- */
-        body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: #f4f7f6;
-            color: #2c3e50;
-            line-height: 1.6;
+        * {
+            box-sizing: border-box;
             margin: 0;
-            padding: 40px 20px;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
         }
 
         .container {
-            max-width: 900px; 
+            width: 100%;
+            max-width: 1200px;
             margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Navigation */
+        header {
+            background-color: rgba(18, 20, 28, 0.95);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            background: linear-gradient(45deg, var(--text-light), var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+            -webkit-text-fill-color: initial;
+        }
+
+        .cart-btn {
+            background-color: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-light);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .cart-btn:hover {
+            border-color: var(--primary-color);
+            background-color: rgba(42, 117, 211, 0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 60px 0;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr 1fr;
+                padding: 100px 0;
+            }
+        }
+
+        .hero-text h1 {
+            font-size: 2.5rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        @media (min-width: 992px) {
+            .hero-text h1 {
+                font-size: 3.2rem;
+            }
+        }
+
+        .hero-text h1 span {
+            color: var(--primary-color);
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        .cta-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 35px;
+        }
+
+        @media (min-width: 480px) {
+            .cta-group {
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 16px 32px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(42, 117, 211, 0.4);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(42, 117, 211, 0.6);
+        }
+
+        .trust-badges-inline {
+            display: flex;
+            gap: 20px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
             position: relative;
         }
 
-        h1 {
-            text-align: center;
-            color: #1a252f;
-            margin-bottom: 30px;
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            width: 80%;
+            height: 80%;
+            background: radial-gradient(circle, rgba(42, 117, 211, 0.15) 0%, transparent 70%);
+            top: 10%;
+            left: 10%;
+            z-index: 0;
         }
 
-        h2 {
-            color: #34495e;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 5px;
+        .hero-image img {
+            z-index: 1;
+            filter: drop-shadow(0 15px 30px rgba(0,0,0,0.5));
+            border-radius: 12px;
+            max-height: 450px;
+            object-fit: contain;
+        }
+
+        /* Trustbar Section */
+        .trustbar {
+            background-color: var(--card-bg);
+            padding: 25px 0;
+            border-y: 1px solid var(--border-color);
+        }
+
+        .trustbar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+
+        .trustbar-box h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--text-light);
+        }
+
+        .trustbar-box p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Benefits / Features Section */
+        .benefits {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .section-title h2 span {
+            color: var(--primary-color);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .benefit-card {
+            background-color: var(--card-bg);
+            padding: 40px 30px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 203, 5, 0.4);
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--accent-gold);
             display: inline-block;
         }
 
-        /* --- KARTEN-DESIGN --- */
-        .card {
-            background: #ffffff;
-            padding: 25px 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            margin-bottom: 30px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .benefit-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        .benefit-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
         }
 
-        /* --- TABELLEN-DESIGN --- */
-        table {
+        /* Product Details Specs */
+        .specs-section {
+            padding: 80px 0;
+            background-color: rgba(31, 35, 48, 0.4);
+        }
+
+        .specs-wrapper {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .specs-wrapper {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .specs-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
         }
 
-        th, td {
-            padding: 15px;
+        .specs-table tr {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .specs-table td {
+            padding: 15px 0;
+            font-size: 1rem;
+        }
+
+        .specs-table td:first-child {
+            font-weight: 700;
+            color: var(--text-muted);
+            width: 40%;
+        }
+
+        .specs-table td:last-child {
+            color: var(--text-light);
             text-align: right;
-            border-bottom: 1px solid #ecf0f1;
-            font-size: 0.95em;
         }
 
-        th {
-            background-color: #f8f9fa;
-            color: #7f8c8d;
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 0.85em;
-            letter-spacing: 0.5px;
+        /* FAQ Section */
+        .faq {
+            padding: 80px 0;
         }
 
-        th:first-child, td:first-child {
-            text-align: left;
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
-        tbody tr {
-            transition: background-color 0.2s ease;
+        .faq-item {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 25px;
         }
 
-        tbody tr:hover {
-            background-color: #f1f8ff;
-        }
-
-        .highlight-row {
-            background-color: #e8f4fd;
-            border-left: 4px solid #3498db;
-        }
-
-        .highlight-row td {
-            font-weight: bold;
-            color: #2980b9;
-        }
-
-        /* --- LISTEN --- */
-        ul {
-            padding-left: 20px;
-        }
-
-        li {
+        .faq-item h3 {
+            font-size: 1.15rem;
             margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-light);
+        }
+
+        .faq-item p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Final CTA Footer */
+        .final-cta {
+            padding: 100px 0;
+            text-align: center;
+            background: linear-gradient(180deg, var(--dark-bg) 0%, rgba(42, 117, 211, 0.1) 100%);
+        }
+
+        .final-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .final-cta p {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+            font-size: 1.1rem;
+        }
+
+        footer {
+            background-color: #0b0c10;
+            padding: 40px 0;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Auswertung: Eigen- vs. Fremdlagerung</h1>
-
-        <div class="card">
-            <h2>1. Kostenübersicht der Bestellmengen</h2>
-            <p>Vergleich der Gesamtkosten auf Basis des durchschnittlichen Lagerbestands bei 3 bis 7 Lieferungen pro Jahr.</p>
-            
-            <table>
-                <thead>
-                    <tr>
-                        <th>Lieferungen</th>
-                        <th>Bestellmenge</th>
-                        <th>Ø Lagerbestand</th>
-                        <th>Bestellkosten</th>
-                        <th>Kosten Eigenlager</th>
-                        <th>Kosten Fremdlager</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>3</td>
-                        <td>4.000 Stk.</td>
-                        <td>2.000 Stk.</td>
-                        <td>4.500,00 €</td>
-                        <td>21.500,00 €</td>
-                        <td>25.100,00 €</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>3.000 Stk.</td>
-                        <td>1.500 Stk.</td>
-                        <td>6.000,00 €</td>
-                        <td>21.250,00 €</td>
-                        <td>21.450,00 €</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>2.400 Stk.</td>
-                        <td>1.200 Stk.</td>
-                        <td>7.500,00 €</td>
-                        <td>21.700,00 €</td>
-                        <td>19.860,00 €</td>
-                    </tr>
-                    <tr class="highlight-row">
-                        <td>6</td>
-                        <td>2.000 Stk.</td>
-                        <td>1.000 Stk.</td>
-                        <td>9.000,00 €</td>
-                        <td>22.500,00 €</td>
-                        <td>19.300,00 €</td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td>1.714 Stk.</td>
-                        <td>857 Stk.</td>
-                        <td>10.500,00 €</td>
-                        <td>23.500,00 €</td>
-                        <td>19.328,57 €</td>
-                    </tr>
-                </tbody>
-            </table>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">Kanto<span>Collectibles</span></div>
+            <button class="cart-btn">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                Warenkorb
+            </button>
         </div>
+    </header>
 
-        <div class="card">
-            <h2>2. Handlungsempfehlung</h2>
-            <p>Die Variante mit den geringsten Kosten ist die <strong>Fremdlagerung bei 6 Lieferungen pro Jahr</strong>. Die jährlichen Gesamtkosten belaufen sich hierbei auf das Minimum von <strong>19.300,00 EUR</strong>.</p>
-        </div>
+    <!-- Main Content -->
+    <main>
+        
+        <!-- Hero Section -->
+        <section class="container hero">
+            <div class="hero-text">
+                <h1>Das originale japanische <span>Pokémon Card 151</span> Display</h1>
+                <p>Erlebe die pure Nostalgie der ersten Generation. Sichere dir das exklusive japanische "Scarlet & Violet 151" Booster Display (sv2a) mit der garantierten Chance auf seltene Masterball Reverse Holos und perfekter Druckqualität für dein nächstes Grading.</p>
+                
+                <div class="cta-group">
+                    <button class="btn-primary" onclick="alert('In den Warenkorb gelegt!')">Jetzt Box sichern</button>
+                </div>
 
-        <div class="card">
-            <h2>3. Risikobewertung</h2>
-            <p>Bei der Entscheidung für 6 Lieferungen und eine Fremdlagerung sollten folgende Risiken beachtet werden:</p>
-            <ul>
-                <li><strong>Abhängigkeit vom Dienstleister:</strong> Durch das Fremdlager begibt man sich in die Abhängigkeit eines Dritten (Risiko von Streiks, Insolvenz oder Qualitätsmängeln bei der Lagerung).</li>
-                <li><strong>Transport- und Versorgungsrisiko:</strong> Bei 6 Lieferungen pro Jahr ist der Sicherheitspuffer im Lager geringer (max. 2.000 Stück). Lieferschwierigkeiten des spanischen Zulieferers oder Transportausfälle führen schneller zu Produktionsstillständen.</li>
-            </ul>
+                <div class="trust-badges-inline">
+                    <div class="trust-item">
+                        <svg width="16" height="16" fill="none" stroke="var(--primary-color)" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+                        100% Original & Sealed
+                    </div>
+                    <div class="trust-item">
+                        <svg width="16" height="16" fill="none" stroke="var(--primary-color)" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+                        Versand aus DE
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <!-- Bild-Einbindung -->
+                <img src="05ed8cbe-878b-548d-b27e-8e3cb7be70e6.jpg" alt="Japanisches Pokémon Card 151 Booster Display">
+            </div>
+        </section>
+
+        <!-- Trustbar Section -->
+        <section class="trustbar">
+            <div class="container trustbar-grid">
+                <div class="trustbar-box">
+                    <h3>Blitzversand</h3>
+                    <p>In 1-3 Werktagen bei dir zu Hause</p>
+                </div>
+                <div class="trustbar-box">
+                    <h3>Sicher verpackt</h3>
+                    <p>Polsterung für unbeschädigte OVP</p>
+                </div>
+                <div class="trustbar-box">
+                    <h3>Sammler-Garantie</h3>
+                    <p>Ausschließlich Factory Sealed Ware</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section class="container benefits">
+            <div class="section-title">
+                <h2>Warum das japanische <span>151 Set</span> ein Must-Have ist</h2>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">✨</div>
+                    <h3>Die originalen 151 Pokémon</h3>
+                    <p>Von Bisasam bis Mew – alle ikonischen Taschenmonster der ersten Generation vereint in einem einzigen, revolutionären Spezialset.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">◓</div>
+                    <h3>Exklusive Masterball Holos</h3>
+                    <p>Nur in der japanischen Version! Jedes Display enthält garantiert eine der extrem seltenen und wertvollen Holo-Karten mit dem einzigartigen Meisterball-Muster.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🏆</div>
+                    <h3>Höchstes Grading-Potenzial</h3>
+                    <p>Die japanischen Prints sind weltweit für ihr herausragendes Centering und makellose Oberflächen bekannt. Perfekt für PSA, Beckett oder Ultimate Guard Submissions.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Specs Section -->
+        <section class="specs-section">
+            <div class="container specs-wrapper">
+                <div>
+                    <h2 style="font-size: 2rem; margin-bottom: 20px;">Produktdetails & Lieferumfang</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 20px;">Das Set "Scarlet & Violet Enhanced Expansion Pack: Pokémon Card 151" (sv2a) ist eines der begehrtesten Sammlerobjekte des modernen TCG-Zeitalters. Wir garantieren den ungeöffneten Originalzustand mit intakter Schrumpffolie.</p>
+                </div>
+                <div>
+                    <table class="specs-table">
+                        <tr>
+                            <td>Edition</td>
+                            <td>Scarlet & Violet (sv2a)</td>
+                        </tr>
+                        <tr>
+                            <td>Sprache</td>
+                            <td>Japanisch</td>
+                        </tr>
+                        <tr>
+                            <td>Inhalt pro Display</td>
+                            <td>20 Booster-Packs</td>
+                        </tr>
+                        <tr>
+                            <td>Karten pro Pack</td>
+                            <td>7 Karten (Zufällige Auswahl)</td>
+                        </tr>
+                        <tr>
+                            <td>Zustand</td>
+                            <td>Neu & OVP (Factory Sealed)</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="container faq">
+            <div class="section-title">
+                <h2>Häufig gestellte <span>Fragen</span></h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3>Sind die Displays garantiert ungewogen?</h3>
+                    <p>Ja, absolut. Wir vertreiben ausschließlich originalverschweißte (Factory Sealed) Displays direkt aus Japan. Es findet keinerlei Selektion oder Vorab-Wägung statt.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Was ist der Unterschied zur deutschen Version?</h3>
+                    <p>Die japanische Version bietet eine deutlich höhere Druck- und Materialqualität sowie exklusive Karteneffekte wie die God Packs und die exklusiven Masterball Reverse Holos, die im westlichen Set komplett fehlen.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Wie werden die Displays versendet?</h3>
+                    <p>Als Sammler wissen wir, wie wichtig der Zustand der Box ist. Jedes Display wird dick in Luftpolsterfolie eingewickelt und in einem stabilen Karton versendet, damit die OVP unbeschädigt bleibt.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA Section -->
+        <section class="final-cta">
+            <div class="container">
+                <h2>Bereit für deine Reise nach Kanto?</h2>
+                <p>Die Bestände der japanischen 151 Edition sind stark limitiert und weltweit extrem gefragt. Sichere dir dein Display, bevor die Preise weiter steigen.</p>
+                <button class="btn-primary" onclick="alert('In den Warenkorb gelegt!')">In den Warenkorb legen</button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Kanto Collectibles. Alle Rechte vorbehalten. Pokémon und die dazugehörigen Marken sind Eigentum von Nintendo, Creatures und Game Freak.</p>
         </div>
-    </div>
+    </footer>
 
 </body>
 </html>
